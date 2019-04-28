@@ -29,7 +29,7 @@ module.exports = () => {
 
     // load models
     var models = [
-        'board',
+        'pin',
         'comment'
     ];
     models.forEach(function (modelName) {
@@ -50,5 +50,5 @@ module.exports = () => {
 
 
     // export db
-    module.exports.db = model;
+    return model;
 }

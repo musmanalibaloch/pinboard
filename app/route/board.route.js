@@ -1,16 +1,19 @@
 
-
+const boardController = require('../controller/board.controller');
+const { check } = require('express-validator/check');
 /*
 *
 * @Description: Create board endpoints 
 * @Argument @Property{app(express instance)}   
 * 
 */
+module.exports = (app) => {
 
-module.exports = ( app ) =>
-{
-
-  app.get("/hello",(req,res)=>{
-      res.send("hello");
-  })
+  app.post(
+    "/pins",
+    [
+      check('title', 'title is not provided').exists(),
+      check('content', 'content is not provided').exists(),
+    ],
+    boardController.createPin);
 }
