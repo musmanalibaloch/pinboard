@@ -5,7 +5,7 @@
 */
 
 module.exports = (sequelize, type) => {
-    return sequelize.define('Pin', {
+    const Pin = sequelize.define('Pin', {
         id: {
           type: type.INTEGER,
           primaryKey: true,
@@ -15,4 +15,10 @@ module.exports = (sequelize, type) => {
         title: type.STRING,
         image: type.TEXT
     })
+
+    Pin.associate = (model) =>{
+        Pin.hasMany(model.comment);
+    }
+
+    return Pin;
 }

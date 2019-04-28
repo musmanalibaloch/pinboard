@@ -1,0 +1,12 @@
+.header
+{
+    height:50px;
+    width:100%;
+    background-color:rgba(57, 219, 179, 0.836);
+}
+.add{
+    float:right;
+    margin-right:10px;
+    height:50px;
+    color:black;
+}

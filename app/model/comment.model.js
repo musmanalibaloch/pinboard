@@ -18,7 +18,7 @@ module.exports = (sequelize, type) => {
     })
 
     Comment.associate = (model) =>{
-        Comment.belongsTo(model.board);
+        Comment.belongsTo(model.pin);
     }
     return Comment;
 }

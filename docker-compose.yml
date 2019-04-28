@@ -1,12 +1,12 @@
-version: '2'
+version: '3'
 services:
   app:
     build: 
       context: ./app
     command: npm run dev
     
-  #  volumes:
-   #   - .:/usr/app/app
+    # volumes:
+    #  - .:/usr/app/app
     ports:
       - "8080:8080"
     depends_on:
@@ -14,9 +14,18 @@ services:
     
     environment:
       DATABASE_URL: 
-
+  
+  frontend:
+    build: 
+      context: pinboard # specify the directory of the Dockerfile
+    ports:
+      - "4200:4200" # specify port mapping
+    links:
+      - app
+       
   mysql:
     image: mysql:5.7
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db

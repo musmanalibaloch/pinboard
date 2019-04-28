@@ -19,10 +19,10 @@ exports.createComment = async (req, res) => {
         const {comment,pinId} = req.body;
 
         //create new pin on board
-        const comment = await db.comment.create({ "PinId": pinId, "comment": comment });
+        const comments = await db.comment.create({ "PinId": pinId, "comment": comment });
 
         //sends success or failure response
-        util.responseHandler(res, 'comment', comment);
+        util.responseHandler(res, 'comment', comments);
 
     } catch (error) {
         //throw error
