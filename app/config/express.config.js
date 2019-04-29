@@ -1,9 +1,12 @@
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-
+const express = require('express');
 
 module.exports = (app) => {
+
+    //statically serve file
+    app.use(express.static('uploads'))
 
     //enable cors
     app.use(cors());

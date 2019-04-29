@@ -7,17 +7,35 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ModalServiceComponent } from './modal-service/modal-service.component';
 import { FormsModule } from "@angular/forms";
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { PinsComponent } from './pins/pins.component';
+import { RouterModule, Routes } from '@angular/router';
+import { PinDetailComponent } from './pin-detail/pin-detail.component';
+
+const routes:Routes = 
+[
+  {path:'',component:PinsComponent},
+  {path:'pins',component:PinsComponent},
+  {path:'pin/:id',component:PinDetailComponent},
+  { path: '**', component: PinsComponent }
+]
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ModalServiceComponent
+    ModalServiceComponent,
+    PinDetailComponent,
+    PinsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

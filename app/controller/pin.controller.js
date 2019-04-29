@@ -8,11 +8,14 @@ const { validationResult } = require('express-validator/check');
 
 exports.createPin = async (req, res) => {
     try {
+        console.log(req.file,req.files)
         if (req.file) {
     
+        validate(req.body,res);
         //get props
         const { content, title } = req.body;
-
+        
+        
 
         //create new pin on board
         const pin = await db.pin.create({ "image": req.file.filename, "content": content, "title": title });
@@ -40,10 +43,10 @@ exports.getPins = async (req, res) => {
 
         //paginate
         const total = 10;
-        const page = req.body.page || 0;
-
+        const page = req.query['page'] || 0;
+       
         //response 
-        res.send({ pins: await db.pin.findAll({ offset: page, limit: total }).map((elem) => elem) }).status(200);
+        res.send({ pins: await db.pin.findAll({ offset: page * total , limit: total }).map((elem) => elem) }).status(200);
 
     } catch (error) {
 
@@ -73,4 +76,27 @@ exports.detailPin = async (req, res) => {
         res.send(error.message).status(500);
     }
 }
+const validate = (body,res) =>{
+        let error = "fields ";
+        let flag =false;
+        if(!body.title)
+        {
+            flag = true;
+            error += "title ";
+        }
+        if(!body.content)
+        {
+            flag = true;
+            error += "and content ";
+        }
+
+        error +="is/are not provided";
+
+        if(flag)
+        res.send(error).status(400);
+
+        
+
+    }
+
 

@@ -1,6 +1,6 @@
 <button type="button" class="btn height btn-primary" (click)="openModal(template)">Add pin</button>
  
-<ng-template #template>
+<ng-template #template id="modal">
   <div class="modal-header">
     <h4 class="modal-title pull-left">Add new pin</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -8,7 +8,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form (ngSubmit)="onSubmit()" #pinForm="ngForm">
+    <form (ngSubmit)="onSubmit(form)" #pinForm="ngForm" enctype='multipart/form-data'>
       <div class="form-group">
         <label for="recipient-name" class="form-control-label" required>Title*</label>
         <input [(ngModel)]="pin.title" maxlength="50" type="text" class="form-control" name="title" #title="ngModel">
@@ -21,11 +21,13 @@
       </div>
       <div class="form-group">
         <label for="message-text" class="form-control-label">Attachment*</label>
-        <input [(ngModel)]="uploadedFile" (change)="fileChange($event)" accept="image/*" type="file"  #image="ngModel" class="form-control" name="image" required>
+        <input  (change)="fileChange($event)" accept="image/*" type="file"  class="form-control" name="file" required>
         <img [src]="imgURL" height="200" *ngIf="imgURL">
        
       </div>
-      <p *ngIf="error" style="color:red">Form is not properly filled</p>
+      <p *ngIf="error" style="color:red">{{errorMessage}}</p>
+      <p *ngIf="successResponse" style="color:green">{{successMessage}}</p>
+      <p *ngIf="loading" style="color:green">{{loadingMessage}}</p>
       <button  type="submit" class="btn btn-primary">Pin it</button>
       
       

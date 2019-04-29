@@ -14,8 +14,8 @@ exports.responseHandler = (res,entityType,entity) =>{
 
      //check if pin created
      if(entity)
-     res.send(`${entityType} created`).status(200);
+     res.send({message:`${entityType} created`}).status(200);
      else
-     res.send(`${entityType} failed to create`).status(400);
+     res.send({message:`${entityType} failed to create`}).status(400);
  
 }

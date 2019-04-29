@@ -18,6 +18,11 @@ exports.createComment = async (req, res) => {
         //get props
         const {comment,pinId} = req.body;
 
+        if(!comment || !pinId)
+        {
+            throw new Error("content or pin")
+        }
+
         //create new pin on board
         const comments = await db.comment.create({ "PinId": pinId, "comment": comment });
 

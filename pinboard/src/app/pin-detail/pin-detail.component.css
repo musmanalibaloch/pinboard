@@ -1,0 +1,21 @@
+.space
+{
+    margin-top:50px;
+}
+.title
+{
+    font: size 20px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.image{
+    height:500px;
+    width:80%;
+    text-align: center;
+}
+.content{
+    height:200px;
+    width:80%;
+    font-size:15px;
+    font-family: cursive;
+}

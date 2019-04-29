@@ -1,3 +1,7 @@
 .height{
     height:50px;
 }
+
+#modal{
+     overflow-y:scroll;
+}
