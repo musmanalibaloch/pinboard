@@ -38,7 +38,7 @@ module.exports = () => {
     });
 
     //load all models in db
-    sequelize.sync();
+    sequelize.sync({force:true});
 
 
     //make associations between schema

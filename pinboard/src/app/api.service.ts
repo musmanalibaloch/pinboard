@@ -21,7 +21,11 @@ export class ApiService {
   }
   getPinDetail(pinId)
   {
-    return this.http.get(`this.baseUrl/pins/${pinId}`);
+    return this.http.get(`${this.baseUrl}/pins/${pinId}`);
+  }
+  makeComment(pinId,comment)
+  {
+    return this.http.post(`${this.baseUrl}/comments`,{pinId:pinId,comment:comment});
   }
   httpOptions(type:string="application/json"){
     const httpOptions = {

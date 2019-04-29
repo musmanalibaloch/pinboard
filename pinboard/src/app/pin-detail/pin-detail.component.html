@@ -1,19 +1,24 @@
-<div class="text-center space title">
+<div *ngIf="pin" class="text-center space title">
   PIN DETAILS
 </div>
 
-<div class="frame">
+<div *ngIf="pin" class="frame">
   <div class="text-center title">
-
+    {{pin.title}}
   </div>
-  <div class="image">
-
-  </div>
+  <img class="image" [src]="'http://localhost:8080/'+pin.image" height="400" width="600" alt="">
   <div class="content">
-
+    {{pin.content}}
   </div>
-  <div class="comment">
-    comment goes here
+  <div *ngIf="pin.Comments.length > 0" class="comment">
+    <span class="label">COMMENTS:</span>     
+    <div *ngFor="let comments of pin.Comments;" class="single-comment">
+       {{comments.comment}}
+     </div>
+     <br/>
   </div>
-
+  <div class="makeComment">
+  <input [(ngModel)]="comment" class="cominp" type="text" name="comment" class="comment" placeholder="Add comment here"> <button (click)="makeComment()" class="btn btn-primary">Comment</button>
+  </div>
 </div>
+<div *ngIf="!pin" class="space"> :-( This pin id does not exist</div>

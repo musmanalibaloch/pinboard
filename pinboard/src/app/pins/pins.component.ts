@@ -24,15 +24,25 @@ export class PinsComponent implements OnInit {
       {
         if(res['pins']['length'] ===0 )
         {
-          this.currentPage = this.currentPage - 1;
           alert("No more pins to load");
         }
         else if(this.pins.length > 0)
         {
-
-          
-          this.pins = this.pins.concat(res['pins']);
-          console.log(this.pins);
+          if(res['pins']['length'] > 10)
+          {
+            this.pins = this.pins.concat(res['pins']);
+            console.log(this.pins);
+            this.currentPage = this.currentPage +1;
+          }
+          else
+          {
+            this.pins = res['pins'];
+            if(res['pins']['length'] === this.pins.lenght)
+            {
+              alert("No new pins to load");
+            }
+            
+          }
         }
         else
         this.pins = res['pins'];
@@ -41,7 +51,7 @@ export class PinsComponent implements OnInit {
   }
 
   loadMorePins(){
-    this.currentPage = this.currentPage +1;
+    
     this.getPinsByPage(this.currentPage);
   }
 

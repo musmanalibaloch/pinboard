@@ -69,7 +69,7 @@ export class ModalServiceComponent implements OnInit {
         setTimeout(()=>{
           this.sucessResponse = false;
           this.closeModal();
-        },2000);
+        },1000);
       }
     })
      

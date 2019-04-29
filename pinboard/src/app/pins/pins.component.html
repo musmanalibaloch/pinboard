@@ -4,11 +4,11 @@
     <div class="card">
       <div class="title">{{pin.title}}</div>
       <div class="content">{{pin.content}}</div>
-      <div class="image"><img [src]="'http://localhost:8080/'+pin.image" height="100" width="300"></div>
+      <div class="image"><img [src]="'http://localhost:8080/'+pin.image" height="100" width="200"></div>
       <div class="view"><button [routerLink]="['/pin', pin.id]" class="btn btn-primary btn-lg btn-block"> View/Comment</button></div>
     </div>
   </div>
  
 </div>
 <button *ngIf="pins"  type="button" (click)="loadMorePins()" class="btn btn-warning btn-lg loader">Load more pins</button>
-<p *ngIf="!pins">:-) There are no pins yet,create one now.</p>
+<p *ngIf="pins.length===0">:-) There are no pins yet,create one now.</p>
