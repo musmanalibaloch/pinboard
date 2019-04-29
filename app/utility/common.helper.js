@@ -12,7 +12,7 @@
 */
 exports.responseHandler = (res,entityType,entity) =>{
 
-     //check if pin created
+     //check if entity exists
      if(entity)
      res.send({message:`${entityType} created`}).status(200);
      else
